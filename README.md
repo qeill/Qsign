@@ -4,8 +4,8 @@
 
 APK一键签名工具原生版是一个基于C语言和OpenSSL库开发的APK签名工具，不依赖Java的keytool和jarsigner工具，直接使用OpenSSL库实现RSA密钥生成、SHA哈希计算和APK签名功能。该工具提供了两种版本：
 
-- **apksigner_native**：终端版，适合命令行操作和自动化脚本使用
-- **apksigner_gui_native**：GUI版，适合不熟悉命令行操作的用户使用
+- **qsign**：终端版，适合命令行操作和自动化脚本使用
+- qsign-gui：GUI版，适合不熟悉命令行操作的用户使用
 
 ## 功能特点
 
@@ -53,7 +53,7 @@ APK一键签名工具原生版是一个基于C语言和OpenSSL库开发的APK签
 
 #### 命令行参数
 
-apksigner_native.exe [选项] <APK文件路径>
+qsign.exe [选项] <APK文件路径>
 
 选项：
   -h, --help          显示帮助信息
@@ -73,24 +73,24 @@ apksigner_native.exe [选项] <APK文件路径>
 
 1. **自动生成密钥对并签名APK**
    ```bash
-   apksigner_native.exe -g -o signed.apk app.apk
+   qsign.exe -g -o signed.apk app.apk
 ```
 
 2. **使用已有密钥文件签名APK**
    ```bash
-   apksigner_native.exe -p private.pem -u public.pem -o signed.apk app.apk
+   qsign.exe -p private.pem -u public.pem -o signed.apk app.apk
    ```
 
 3. **验证APK签名**
    ```bash
-   apksigner_native.exe -t -c public.pem app.apk
+   qsign.exe -t -c public.pem app.apk
    ```
 
 ### GUI版
 
 #### 运行程序
 
-直接双击`apksigner_gui_native.exe`文件即可运行程序。
+直接双击`qsign-gui.exe`文件即可运行程序。
 
 #### 界面说明
 
@@ -149,47 +149,28 @@ apksigner_native.exe [选项] <APK文件路径>
 ## 注意事项
 
 1. 确保OpenSSL库已正确安装和配置
+
 2. 密钥文件和APK文件路径中不要包含特殊字符
+
 3. 签名后的APK文件会覆盖原文件（除非指定了不同的输出路径）
+
 4. 自动生成的密钥文件会保存在当前目录下，请注意备份
+
 5. 建议使用2048位或4096位密钥长度，提高安全性
+
 6. 支持的APK格式为标准ZIP格式，不支持特殊压缩格式
+
 7. GUI版程序已解决字体乱码问题，支持Unicode字符显示
+
 8. 程序运行过程中请勿关闭窗口，否则可能导致APK文件损坏
+
 9. 签名大型APK文件时可能需要较长时间，请耐心等待
 
-## 文件说明
-
-### 核心文件
-
-- `apksigner_native.c`：终端版主程序文件
-- `apksigner_gui_native.c`：GUI版主程序文件
-- `sign_utils.c`：签名工具函数，包含RSA密钥生成、SHA哈希计算和签名验证功能
-- `sign_utils.h`：签名工具头文件，定义了相关的数据结构和函数原型
-- `zip_utils.c`：ZIP文件处理函数，包含APK文件的解析和修改功能
-- `zip_utils.h`：ZIP文件处理头文件，定义了相关的数据结构和函数原型
-
-### 构建脚本
-
-- `build_native.bat`：终端版构建脚本
-- `build_gui_native.bat`：GUI版构建脚本
-
-## 技术细节
-
-- **开发语言**：C语言
-- **GUI框架**：Windows API（仅GUI版）
-- **加密库**：OpenSSL 1.1.1或更高版本
-- **签名格式**：V1 JAR签名（兼容大部分Android设备）
-- **加密算法**：RSA with SHA256
-- **密钥格式**：PEM格式
-- **ZIP处理**：自定义ZIP解析和修改实现
-- **字符编码**：
-  - 终端版：UTF-8
-  - GUI版：Unicode UTF-16
+   
 
 ## 版本历史
 
-- v1.0.0 (2025-12-28)：初始版本
+- v1.0.0 (2025-12-28)：最新版本
   - 不依赖Java工具包，独立运行
   - 支持自动生成RSA密钥对
   - 支持使用已有密钥文件
@@ -201,8 +182,8 @@ apksigner_native.exe [选项] <APK文件路径>
 
 ## 许可证
 
-本程序采用MIT许可证，可自由使用、修改和分发。
+本程序采用Apache2.0许可证，可自由使用、修改和分发。
 
 ## 联系方式
 
-如有问题或建议，欢迎联系开发者。
+如有问题或建议，欢迎issue说明。
