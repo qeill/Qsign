@@ -20,7 +20,7 @@ APK一键签名工具原生版是一个基于C语言和OpenSSL库开发的APK签
 - ✅ 支持V1 JAR签名格式
 - ✅ 支持SHA1和SHA256哈希算法
 - ✅ 支持选择密钥长度（1024/2048/4096）
-- ✅ 支持Windows、Linux、macOS等多平台
+- ✅ 支持Windows、Linux(不支持GUI版本)
 - ✅ 支持UTF-8编码的文件名
 
 ### 终端版特点
